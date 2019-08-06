@@ -22,13 +22,13 @@ function outer() {
   Invoke outer saving the return value into another variable called 'inner'.
 */
   
-// Code Here
+let inner = outer()
 
 
 
 //Once you do that, invoke inner.
 
-//Code Here
+inner()
 
 
 
@@ -52,6 +52,8 @@ function callFriend(name) {
 */
 
 //Code Here
+let callJake = callFriend('Jake', 435-555-9248)
+callJake()
 
 
 
@@ -62,15 +64,21 @@ function callFriend(name) {
 */
 
 //Code Here
-
+function makeCounter (startNum) {
+  let num = 0
+  return function addNum () {
+     num++
+     return num
+  }
+}
 
 
 //Uncomment this once you make your function
-//   var count = makeCounter();
-//   count(); // 1
-//   count(); // 2
-//   count(); // 3
-//   count(); // 4
+  var count = makeCounter();
+  count(); // 1
+  count(); // 2
+  count(); // 3
+  count(); // 4
 
 
 
@@ -87,39 +95,53 @@ function callFriend(name) {
 
 function counterFactory(value) {
   // Code here.
-
-  return {
-
+  let num = value
+  return{
+    inc: function () {
+      num++
+      return num
+    },
+    dec: function () {
+      num--
+      return num
+    }
   };
 }
 
 counter = counterFactory(10);
-// counter.inc() // 11
-// counter.inc() // 12
-// counter.inc() // 13
-// counter.dec() // 12
+counter.inc() // 11
+counter.inc() // 12
+counter.inc() // 13
+counter.dec() // 12
 
 
 
 ////////// PROBLEM 5 //////////
 
 /*
-  Inside the motivation function create another function called message that will return the welcome text with the firstname and lastname.
-  The final message should say "You're doing awesome, keep it up firstname lastname." 
-  (Hint: don't forget to have a space between the firstname and lastname and a period at the end of the sentence.)
+  Inside the motivation function create another function
+   called message that will return the welcome text with 
+   the firstname and lastname.
+  The final message should say "You're doing awesome, 
+  keep it up firstname lastname." 
+  (Hint: don't forget to have a space between the 
+  firstname and lastname and a period at the end of the
+   sentence.)
 */
 
 function motivation( firstname, lastname ) {
   var welcomeText = "You're doing awesome, keep it up";
 
   // code message function here.
-
-  //Uncommment this to return the value of your message function
-  //return message;
+  function message () {
+    return `${welcomeText} ${firstname} ${lastname}.`
+  }
+  // Uncommment this to return the value of your message function
+  return message;
 }
 
-var greeting = motivation('Billy', 'Bob'); // 'You're doing awesome keep it up Billy Bob.
-
+var greeting = motivation()
+greeting(); // 'You're doing awesome keep it up Billy Bob.
 
 
 ////////// PROBLEM 6 //////////
@@ -144,6 +166,9 @@ var module = (function() {
   // outside our lexical scope
   return {
     // Code here.
+    publicMethod: () => {
+      return privateMethod()
+    }
   };
 })();
 
@@ -152,10 +177,15 @@ var module = (function() {
 ////////// PROBLEM 7 //////////
 
 /*
-  Here we have a function named secretNumber that has a secret number.
-  Inside the return object, create two methods called addToSecret and takeAwayFromSecret.
-  addToSecret should have a parameter that is added to the secret number returning the updated secret number.
-  takeAwayFromSecret should have a parameter that takes away from the secret number returning the updated secret number.
+  Here we have a function named secretNumber that has a 
+  secret number.
+  Inside the return object, create two methods called 
+  addToSecret and takeAwayFromSecret.
+  addToSecret should have a parameter that is added to 
+  the secret number returning the updated secret number.
+  takeAwayFromSecret should have a parameter that takes 
+  away from the secret number returning the updated secret
+   number.
 */
 
 function secretNumber() {
@@ -163,6 +193,12 @@ function secretNumber() {
 
   return {
     // Code here
+    addToSecret: (addNum) => {
+      return secret = secret + addNum
+    },
+    takeAwayFromSecret: (subNum) =>{
+      return secret = secret - subNum
+    }
   };
 }
 
@@ -171,8 +207,10 @@ function secretNumber() {
 ////////// PROBLEM 8 //////////
   
 /*
-  Here we have a for loop that will iterate as long as i is less than or equal to 5.
-  What we need to do is console.log(i) so that it logs like so:
+  Here we have a for loop that will iterate as long as i 
+  is less than or equal to 5.
+  What we need to do is console.log(i) so that it logs
+   like so:
     0 second after call - log 0
     1 seconds after call - log 1
     2 seconds after call - log 2
@@ -180,17 +218,22 @@ function secretNumber() {
     4 seconds after call - log 4
     5 seconds after call - log 5
 
-  However, because each call to console.log occurs after the loop has finished, the value of i has changed before the console.log executes.
-  We'll need to use a closure to preserve a reference to i at the time of execution.
+  However, because each call to console.log occurs after 
+  the loop has finished, the value of i has changed before
+   the console.log executes.
+  We'll need to use a closure to preserve a reference to i 
+  at the time of execution.
   
   Fix the code below to log the desired output.
 */
 
 function timeOutCounter() {
-  for (var i = 0; i <= 5; i++) {
+  for (let i = 0; i <= 5; i++) {
     setTimeout(function() {
-      console.log(i);
+      return console.log(i);
     }, i * 1000);
   }
 }
 timeOutCounter();
+
+

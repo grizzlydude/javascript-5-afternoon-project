@@ -10,11 +10,17 @@
 ////////// PROBLEM 1 //////////
 
 /*
-  Create a constructor function called CarFactory that will build car objects with make and model properties.
-  The values for the make and model will come from two parameters, make and model (in that order).
+  Create a constructor function called CarFactory that
+   will build car objects with make and model properties.
+  The values for the make and model will come from two 
+  parameters, make and model (in that order).
 */
 
 // Code here
+function CarFactory (make, model) {
+  this.make = make
+  this.model = model
+}
 
 ////////// PROBLEM 2 //////////
 
@@ -29,11 +35,14 @@ function Employee(name, email, hireDate) {
 // Do not edit the code above.
 
 /*
-  Invoke the constructor function above and pass in 'Bob', 'bob@gmail.com', and '01-02-98' as arguments.
-  Assign the result of the invocation to a variable called bob.
+  Invoke the constructor function above and pass in 'Bob',
+   'bob@gmail.com', and '01-02-98' as arguments.
+  Assign the result of the invocation to a variable called 
+  bob.
 */
 
 // Code here
+let bob = Employee('Bob', bob)
 
 ////////// PROBLEM 3 //////////
 
